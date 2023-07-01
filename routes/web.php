@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admins.dashboard');
+});
+
+Route::prefix('/admin')->group(function (){
+   Route::prefix('/user')->group(function(){
+      Route::get('/', function (){
+          return view('admins.users.index');
+      });
+   });
 });
